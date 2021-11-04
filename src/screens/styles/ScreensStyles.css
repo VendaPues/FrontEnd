@@ -1,0 +1,213 @@
+/* GENERAL */
+body {
+    margin: 0;
+}
+
+/* WELCOME SCREEN */
+.welcomeContainer {
+    background-image: url("../../assets/backgrounds/5ff9f1be29899.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 70%;
+    height: 100vh;
+    width: 100vw;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    /*background-image: url("../../assets/backgrounds/5ff9f1be29899.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 70%;
+    height: 100vh;
+    width: 100vw;
+    overflow-y: hidden;
+    overflow-x: hidden;*/
+}
+.welcomeLogo {
+    margin-top: 50px;
+    margin-left: 50px;
+    cursor: pointer;
+}
+.welcomeLoginButton {
+    position: fixed;
+    margin-top: -50px;
+    right: 50px;
+}
+.welcomeLoginButtonBtn {
+    height: 50px;
+    width: 200px;
+    text-align: center;
+    padding-top: 10px;
+}
+.welcomeMailCard {
+    background-color: #262626;
+    padding: 25px;
+    height: 280px;
+    width: 650px;
+    border-radius: 10px;
+    position: fixed;
+    bottom: 250px;
+    left: 50px;
+}
+.welcomeMainText {
+    font-size: 33px;
+    color: white;
+    font-weight: 900;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.welcomeSecondText {
+    font-size: 24px;
+    color: white;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.welcomeThirdText {
+    font-size: 18px;
+    color: white;
+    font-weight: 300;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* REGISTER SCREEN */
+.registerTitle {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+.registerForm {
+    padding: 20px;
+    border: solid 1px #ced4da;
+    border-radius: 5px;
+}
+.registerRadioLabels {
+    font-size: 12px;
+    font-weight: 600;
+}
+.registerRememberCheckbox {
+    margin-top: 20px;
+    padding-left: 36%;
+}
+.registerButton {
+    width: 120px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 50%;
+    transform: translate(-50%,0);
+}
+
+/* LOGIN SCREEN */
+.loginProducts {
+    position: fixed;
+    width: 50vw;
+    top: 200px;
+    left: 8vw;
+}
+.loginForm {
+    position: fixed;
+    right: 150px;
+}
+
+/* HOME SCREEN */
+.homeContainer {
+    margin-top: 150px;
+    margin-left: 50%;
+    transform: translate(-50%,0);
+    width: 75vw;
+}
+.homeTab {
+    height: 22.5vw;
+    width: 22.5vw;
+    border: solid 2px #ced4da;
+    border-radius: 5px;
+    margin: 1.25vw;
+}
+.homeTab:hover {
+    -webkit-box-shadow: 5px 5px 15px 5px #9f9ea1; 
+    box-shadow: 5px 5px 15px 5px #9f9ea1;
+}
+.homeTabTitle {
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    padding-top: 20px;
+}
+.homeTabImage {
+    width: 15vw;
+    margin-left: 50%;
+    margin-top: 50%;
+    transform: translate(-50%,-65%);
+}
+
+/* BALANCE SCREEN */
+.balanceContainer {
+    position: relative;
+}
+.balanceTitle {
+    position: absolute;
+    font-size: 45px;
+    font-weight: 700;
+    top: 50px;
+    left: 48vw;
+}
+.datepickerContainer {
+    position: relative;
+}
+.calendarIcon{
+    position: absolute;
+    left: 180px;
+    top: 6px
+}
+.balanceDateTitle {
+    font-size: 25px;
+    font-weight: 700;
+}
+.balanceCard {
+    height: 55px;
+    border: solid 2px #ced4da;
+    border-radius: 5px;
+    text-align: center;
+    padding-top: 11px;
+}
+.balanceCardItem {
+    height: 400px;
+    border: solid 2px #ced4da;
+    border-radius: 5px;
+}
+.imageContainer {
+    background-color: #ced4da;
+}
+.balanceBarsImage {
+    height: 170px;
+    margin-left: 50%;
+    transform: translate(-50%,0);
+}
+.balanceCardLabel {
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 30px;
+}
+.balanceCardButton {
+    width: 180px;
+    margin-left: 50%;
+    transform: translate(-50%,0);
+    margin-top: 30px;
+}
+
+/* PRODUCTS SCREEN */
+.inputProductsContainer {
+    width: 500px;
+    margin-top: 40px;
+}
+.createProductButton {
+    height: 50px;
+    margin-top: 35px;
+    width: 250px;
+}
+.productsSearchSection {
+    margin-left: 25%;
+}
