@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import DatePicker from "react-datepicker";
+import Navbar from "../components/Navbar";
 import "react-datepicker/dist/react-datepicker.css";
 import './styles/ScreensStyles.css';
-import logo from "../assets/images/logo.jpg";
 import bars from "../assets/images/bars.jpg";
 import productExample from "../assets/images/productExample.jpg";
 
@@ -18,15 +17,9 @@ const Balance = () => {
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
 
-    let history = useHistory();
-
-    const goToHome = () => {
-        history.push("/home");
-    }
-
     return (
         <div className="balanceContainer">
-            <img className="welcomeLogo" src={logo} onClick={goToHome} />
+            <Navbar />
             <span className="balanceTitle">Balance</span>
             <div className="container">
                 <div className="row m-5">

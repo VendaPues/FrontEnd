@@ -1,26 +1,20 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import DatePicker from "react-datepicker";
 import SalesItem from "../components/SalesItem";
+import Navbar from "../components/Navbar";
 import './styles/ScreensStyles.css';
-import logo from "../assets/images/logo.jpg";
 
 const Sales = () => {
 
     const salesData = useSelector(state => state.GeneralState.sales);
-    let history = useHistory();
 
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
 
-    const goToHome = () => {
-        history.push("/home");
-    }
-
     return (
         <div className="balanceContainer">
-            <img className="welcomeLogo" src={logo} onClick={goToHome} />
+            <Navbar />
             <span className="balanceTitle">Ventas</span>
             <div className="row m-5">
                 <div className="col-4 balanceDateTitle">Rango de fechas:</div>

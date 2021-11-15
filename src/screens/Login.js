@@ -32,7 +32,7 @@ const Login = () => {
                 alert("El correo o contraseña son incorrectos.");
             });
         } else {
-            alert("El correo o contraseña son incorrectos.");
+            alert("Por favor revise que los campos se encuentren diligenciados correctamente.");
         }
     }
 

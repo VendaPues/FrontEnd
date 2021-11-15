@@ -30,7 +30,7 @@ const Navbar = () => {
             <img className="navbarLogo col-2" src={logo} />
             <Link to="/home" className={`col-1 navbarLabel ${inicioClass}`}>Inicio</Link>
             <Link to="/account" className={`col-1 navbarLabel ${cuentaClass}`}>Cuenta</Link>
-            <button onClick={logOut} className={`col-1 navbarLabel`}>Salir</button>
+            <a onClick={logOut} className={`col-1 navbarLabel`}>Salir</a>
         </div>
     );
 };

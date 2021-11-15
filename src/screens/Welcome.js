@@ -15,13 +15,13 @@ const Welcome = () => {
             storage.setItem('emailToRegister', email);
             history.push("/register");
         } else {
-            alert("Introducir un correo para continuar con el registro.");
+            alert("Introduce tu correo para continuar con el registro.");
         }
     }
 
     return (
         <div className="welcomeContainer">
-            <img className="welcomeLogo" src={logo} />
+            <img className="welcomeLogo" src={logo} alt=""/>
             <div className="welcomeLoginButton">
                 <Link to="/login" type="button" className="btn btn-primary welcomeLoginButtonBtn">Iniciar Sesión</Link>
             </div>
