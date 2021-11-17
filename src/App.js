@@ -22,8 +22,6 @@ const Sales = lazy(() => import("./screens/Sales"));
 
 const CreateProduct = lazy(() => import("./screens/CreateProduct"));
 
-const UpdateProduct = lazy(() => import("./screens/UpdateProduct"));
-
 export default () => {
   useEffect(() => {
     const userInSession = localStorage.getItem("user");
@@ -72,9 +70,6 @@ export default () => {
             </Route>
             <Route path="/create-product">
               <CreateProduct />
-            </Route>
-            <Route path="/update-product">
-              <UpdateProduct />
             </Route>
             <Route path="/" exact>
               <Welcome />

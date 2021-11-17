@@ -136,16 +136,13 @@ body {
 }
 
 /* BALANCE SCREEN */
-.balanceContainer {
-  position: relative;
-}
-.balanceTitle {
+.balance-title {
   display: block;
   text-align: center;
   font-size: 45px;
   font-weight: 500;
 }
-.datepickerContainer {
+.datepicker-container {
   position: relative;
 }
 .calendarIcon {
@@ -157,17 +154,8 @@ body {
   font-size: 25px;
   font-weight: 700;
 }
-.balanceCard {
-  height: 55px;
-  border: solid 2px #ced4da;
-  border-radius: 5px;
-  text-align: center;
-  padding-top: 11px;
-}
-.balanceCardItem {
-  height: 400px;
-  border: solid 2px #ced4da;
-  border-radius: 5px;
+.balance-card {
+  margin: 5px;
 }
 .imageContainer {
   background-color: #ced4da;
@@ -191,29 +179,31 @@ body {
 }
 
 /* PRODUCTS SCREEN */
-.productsTitle {
+.products-title {
   display: block;
   text-align: center;
   font-size: 45px;
   font-weight: 500;
 }
-.inputProductsContainer {
+.input-products-container {
   width: 500px;
   margin-top: 5vh;
   display: block;
   margin-right: auto;
   margin-left: auto;
 }
-.createProductButton {
+.create-product-button {
   height: 40px;
   margin-top: 10px;
   margin-bottom: 10px;
   width: 250px;
 }
-.productsSearchSection {
+.new-product-section {
   display: block;
   text-align: center;
 }
+
+/*LAZY LOADING ITEM*/
 .App-logo {
   display: block;
   margin: auto;

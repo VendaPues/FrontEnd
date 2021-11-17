@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Suspense, lazy } from "react";
-import logo from "../assets/svg/logo.svg"
+import logo from "../assets/svg/logo.svg";
 import { useHistory } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import "./styles/ScreensStyles.css";
@@ -26,7 +26,6 @@ const Products = () => {
         config
       )
       .then((res) => {
-        console.log(res);
         setProductsData(res.data);
       })
       .catch((err) => {
@@ -39,16 +38,24 @@ const Products = () => {
   };
 
   return (
-    <div className="balanceContainer">
+    <div>
       <Navbar />
-      <div>
-        <span className="productsTitle">Productos</span>
-        <div className="row productsSearchSection">
-          <button type="button" onClick={goToCreateProduct} className="btn btn-primary col-3 createProductButton">
+      <div className="container">
+        <span className="products-title">Productos</span>
+        <div className="new-product-section">
+          <button
+            type="button"
+            onClick={goToCreateProduct}
+            className="btn btn-primary create-product-button"
+          >
             Añadir nuevo producto
           </button>
         </div>
-        <Suspense fallback={<img src={logo} className="App-logo" alt="" width="100px"/>}>
+        <Suspense
+          fallback={
+            <img src={logo} className="App-logo" alt="" width="100px" />
+          }
+        >
           {productsData.map((product) => {
             if (product) {
               return <ProductItem key={product.id} productItem={product} />;

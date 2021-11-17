@@ -1,39 +1,52 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import DatePicker from "react-datepicker";
+import React, { useState, Suspense, lazy } from "react";
+import logo from "../assets/svg/logo.svg";
 import SalesItem from "../components/SalesItem";
 import Navbar from "../components/Navbar";
-import './styles/ScreensStyles.css';
+import DateFilterForm from "../components/DateFilterForm";
+import "./styles/ScreensStyles.css";
 
 const Sales = () => {
+  const salesData = [
+    {
+      id: 123,
+      name: "Venta #534",
+      total: 1000,
+      units: 13,
+    },
+    {
+      id: 456,
+      name: "Venta #533",
+      total: 2000,
+      units: 7,
+    },
+  ];
 
-    const salesData = useSelector(state => state.GeneralState.sales);
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
 
-    const [startDate, setStartDate] = useState(new Date());
-    const [endDate, setEndDate] = useState(new Date());
-
-    return (
-        <div className="balanceContainer">
-            <Navbar />
-            <span className="balanceTitle">Ventas</span>
-            <div className="row m-5">
-                <div className="col-4 balanceDateTitle">Rango de fechas:</div>
-                <div className="datepickerContainer col-3">
-                    <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
-                    <i className="far fa-calendar calendarIcon"></i>
-                </div>
-                <div className="datepickerContainer col-3">
-                    <DatePicker selected={endDate} onChange={(date) => setEndDate(date)} />
-                    <i className="far fa-calendar calendarIcon"></i>
-                </div>
-            </div>
-            {salesData.map((sale) => {
-                return (
-                    <SalesItem key={sale.id} salesItem={sale} />
-                );
-            })}
-        </div>
-    );
+  return (
+    <div>
+      <Navbar />
+      <div className="container">
+        <span className="balance-title">Ventas</span>
+        <DateFilterForm
+          currentStartDate={startDate}
+          setStartDateAction={setStartDate}
+          currentEndDate={endDate}
+          setEndDateAction={setEndDate}
+        />
+        <Suspense
+          fallback={
+            <img src={logo} className="App-logo" alt="" width="100px" />
+          }
+        >
+          {salesData.map((sale) => {
+            return <SalesItem key={sale.id} salesItem={sale} />;
+          })}
+        </Suspense>
+      </div>
+    </div>
+  );
 };
 
 export default Sales;

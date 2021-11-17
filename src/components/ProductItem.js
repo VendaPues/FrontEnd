@@ -6,14 +6,24 @@ const Modal = lazy(() => import("../components/Modal"));
 
 const ProductItem = ({productItem}) => {
 
-    const [modalIsOpen, setIsOpen] = useState(false);
+    const [updateModalIsOpen, setUpdateModalOpen] = useState(false);
 
-    function openModal() {
-        setIsOpen(true);
+    const [deleteModalIsOpen, setDeleteModalOpen] = useState(false);
+
+    function openUpdateModal() {
+        setUpdateModalOpen(true);
     }
 
-    function closeModal() {
-        setIsOpen(false);
+    function closeUpdateModal() {
+        setUpdateModalOpen(false);
+    }
+
+    function openDeleteModal() {
+        setDeleteModalOpen(true);
+    }
+
+    function closeDeleteModal() {
+        setDeleteModalOpen(false);
     }
 
     return (
@@ -24,11 +34,15 @@ const ProductItem = ({productItem}) => {
                     <div className="productItemPrice">Precio: ${productItem?.salesPrice}</div>
                     <div className="productItemPrice">Unidades: {productItem?.stock}</div>
                     <div className="productItemPrice">Descripción: {productItem?.description}</div>
-                    <button type="button" onClick={openModal} className="btn btn-primary col-3 productItemButton">Editar</button>
+                    <button type="button" onClick={openUpdateModal} className="btn btn-primary col-3 productItemButton">Editar</button>
                     <Suspense fallback={<img src={logo} className="App-logo" alt="" width="100px"/>}>
-                        <Modal handleClose={closeModal} show={modalIsOpen} item={productItem}/>
+                        <Modal handleClose={closeUpdateModal} show={updateModalIsOpen} item={productItem} child="U"/>
                     </Suspense>
-                    <button type="button" className="btn btn-danger col-3 productItemButton">Eliminar</button>
+
+                    <button type="button" onClick={openDeleteModal} className="btn btn-danger col-3 productItemButton">Eliminar</button>
+                    <Suspense fallback={<img src={logo} className="App-logo" alt="" width="100px"/>}>
+                        <Modal handleClose={closeDeleteModal} show={deleteModalIsOpen} item={productItem} child="D"/>
+                    </Suspense>
                 </div>
                 <img className="productImage col-2" src={productItem?.imageUrl} alt=""/>
             </div>
