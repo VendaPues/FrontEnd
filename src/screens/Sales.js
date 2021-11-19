@@ -1,25 +1,36 @@
-import React, { useState, Suspense, lazy } from "react";
+import React, { useState, useEffect, Suspense, lazy } from "react";
 import logo from "../assets/svg/logo.svg";
 import SalesItem from "../components/SalesItem";
 import Navbar from "../components/Navbar";
 import DateFilterForm from "../components/DateFilterForm";
 import "./styles/ScreensStyles.css";
+import axios from "axios";
 
 const Sales = () => {
-  const salesData = [
-    {
-      id: 123,
-      name: "Venta #534",
-      total: 1000,
-      units: 13,
-    },
-    {
-      id: 456,
-      name: "Venta #533",
-      total: 2000,
-      units: 7,
-    },
-  ];
+  const storage = window.localStorage;
+
+  const [salesData, setSalesData] = useState([]);
+
+  useEffect(() => {
+    let currentUser = JSON.parse(storage.getItem("user"));
+    const config = {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        Authorization: `Bearer ${currentUser.token}`,
+      },
+    };
+    axios
+      .get(
+        `https://venda-pues-sales-api.herokuapp.com/v1/sale/${currentUser.userId}`,
+        config
+      )
+      .then((res) => {
+        setSalesData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());

@@ -9,6 +9,9 @@ const ProductItem = lazy(() => import("../components/ProductItem"));
 
 const Products = () => {
   const [productsData, setProductsData] = useState([]);
+
+  const [shoppingCart, setShoppingCart] = useState([]);
+  
   let history = useHistory();
   const storage = window.localStorage;
 
@@ -37,6 +40,17 @@ const Products = () => {
     history.push("/create-product");
   };
 
+  const goToShopingCart = () => {
+    storage.setItem("shoppingCart", JSON.stringify(shoppingCart));
+  };
+
+  const addToShopingCart = (product) => {
+    const arr = shoppingCart;
+    arr.push(product);
+    setShoppingCart(arr);
+    console.log(shoppingCart);
+  };
+
   return (
     <div>
       <Navbar />
@@ -50,6 +64,13 @@ const Products = () => {
           >
             Añadir nuevo producto
           </button>
+          <button
+            type="button"
+            onClick={goToShopingCart}
+            className="btn btn-primary create-product-button"
+          >
+            Ver carrito
+          </button>
         </div>
         <Suspense
           fallback={
@@ -58,7 +79,13 @@ const Products = () => {
         >
           {productsData.map((product) => {
             if (product) {
-              return <ProductItem key={product.id} productItem={product} />;
+              return (
+                <ProductItem
+                  key={product.id}
+                  productItem={product}
+                  shopingCartAction={addToShopingCart}
+                />
+              );
             }
           })}
         </Suspense>
