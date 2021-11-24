@@ -1,20 +1,26 @@
 import React, { useState, Suspense, lazy } from "react";
 import logo from "../assets/svg/logo.svg";
 import "./styles/ComponentsStyles.css";
-import Dropdown from "react-dropdown";
 
 const Modal = lazy(() => import("../components/Modal"));
 
 const ProductItem = ({ productItem, shopingCartAction }) => {
-  const availableStockOptions = Array.from(
-    Array(productItem?.stock + 1).keys()
-  );
+  const [selectedQuantity, setSelectedQuantity] = useState(0);
 
-  let selectedQuantity = 0;
+  const [cartConfirmationIsOpen, setCartConfirmationModalOpen] =
+    useState(false);
 
   const [updateModalIsOpen, setUpdateModalOpen] = useState(false);
 
   const [deleteModalIsOpen, setDeleteModalOpen] = useState(false);
+
+  function openCartConfirmationModal() {
+    setCartConfirmationModalOpen(true);
+  }
+
+  function closeCartConfirmationModal() {
+    setCartConfirmationModalOpen(false);
+  }
 
   function openUpdateModal() {
     setUpdateModalOpen(true);
@@ -33,47 +39,97 @@ const ProductItem = ({ productItem, shopingCartAction }) => {
   }
 
   function handleShopingCartAction() {
+    openCartConfirmationModal();
     shopingCartAction({
       productId: productItem?.id,
-      units: selectedQuantity,
+      quantity: selectedQuantity,
     });
   }
 
-  function handleQuantitySelection(payload) {
-    selectedQuantity = payload.value;
+  function handleQuantityAdition() {
+    if (selectedQuantity < productItem.stock) {
+      let selectedQuantityCopy = selectedQuantity;
+      selectedQuantityCopy = selectedQuantityCopy + 1;
+      setSelectedQuantity(selectedQuantityCopy);
+    }
+  }
+
+  function handleQuantityReduction() {
+    if (selectedQuantity > 0) {
+      let selectedQuantityCopy = selectedQuantity;
+      selectedQuantityCopy = selectedQuantityCopy - 1;
+      setSelectedQuantity(selectedQuantityCopy);
+    }
   }
 
   return (
-    <div className="productItemContainer">
-      <div className="productItemName">{productItem?.productName}</div>
+    <div className="product-item-container">
+      <div className="product-item-name">{productItem?.productName}</div>
       <div className="row">
         <div className="col-10">
-          <div className="productItemPrice">
-            Precio: ${productItem?.salesPrice}
+          <div className="product-details-container">
+            <div className="product-item-price">
+              <b>Precio:</b> ${productItem?.salesPrice}
+            </div>
+            <div className="product-item-price">
+              <b>Unidades disponibles:</b> {productItem?.stock}
+            </div>
+            <div className="product-item-price">
+              <b>Descripción:</b> {productItem?.description}
+            </div>
           </div>
-          <div className="productItemPrice">Unidades: {productItem?.stock}</div>
-          <div className="productItemPrice">
-            Descripción: {productItem?.description}
+
+          <div className="input-group product-item-button">
+            <div className="input-group-append">
+              <button
+                className="btn btn-secondary"
+                type="button"
+                onClick={handleQuantityReduction}
+              >
+                -
+              </button>
+            </div>
+            <fieldset disabled>
+              <input
+                className="form-control product-quantity-input"
+                placeholder={selectedQuantity}
+              />
+            </fieldset>
+            <div className="input-group-append">
+              <button
+                className="btn btn-secondary"
+                type="button"
+                onClick={handleQuantityAdition}
+              >
+                +
+              </button>
+            </div>
           </div>
-          
-          <Dropdown
-            className="btn btn-secondary col-3 productItemButton"
-            options={availableStockOptions}
-            onChange={handleQuantitySelection}
-            value={selectedQuantity}
-            placeholder="Cantidad"
-          />
+
           <button
             type="button"
             onClick={handleShopingCartAction}
-            className="btn btn-success col-3 productItemButton"
+            className="btn btn-primary col-3 product-item-button"
           >
             Añadir al carrito
           </button>
+          <Suspense
+            fallback={
+              <img src={logo} className="App-logo" alt="" width="100px" />
+            }
+          >
+            <Modal
+              handleClose={closeCartConfirmationModal}
+              show={cartConfirmationIsOpen}
+              item={productItem}
+              child="C"
+            />
+          </Suspense>
+
           <button
             type="button"
             onClick={openUpdateModal}
-            className="btn btn-primary col-3 productItemButton"
+            className="btn btn-secondary col-3 product-item-button"
           >
             Editar
           </button>
@@ -92,7 +148,7 @@ const ProductItem = ({ productItem, shopingCartAction }) => {
           <button
             type="button"
             onClick={openDeleteModal}
-            className="btn btn-danger col-3 productItemButton"
+            className="btn btn-danger col-3 product-item-button"
           >
             Eliminar
           </button>
@@ -110,9 +166,9 @@ const ProductItem = ({ productItem, shopingCartAction }) => {
           </Suspense>
         </div>
         <img
-          className="productImage col-2"
+          className="product-image col-2"
           src={productItem?.imageUrl}
-          alt=""
+          alt={productItem?.id}
         />
       </div>
     </div>

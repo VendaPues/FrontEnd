@@ -11,8 +11,9 @@ const Products = () => {
   const [productsData, setProductsData] = useState([]);
 
   const [shoppingCart, setShoppingCart] = useState([]);
-  
+
   let history = useHistory();
+
   const storage = window.localStorage;
 
   useEffect(() => {
@@ -40,15 +41,15 @@ const Products = () => {
     history.push("/create-product");
   };
 
-  const goToShopingCart = () => {
+  const goToSaleResume = () => {
     storage.setItem("shoppingCart", JSON.stringify(shoppingCart));
+    history.push("/sale-resume");
   };
 
   const addToShopingCart = (product) => {
     const arr = shoppingCart;
     arr.push(product);
     setShoppingCart(arr);
-    console.log(shoppingCart);
   };
 
   return (
@@ -66,7 +67,7 @@ const Products = () => {
           </button>
           <button
             type="button"
-            onClick={goToShopingCart}
+            onClick={goToSaleResume}
             className="btn btn-primary create-product-button"
           >
             Ver carrito

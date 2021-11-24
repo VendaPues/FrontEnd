@@ -22,6 +22,8 @@ const Sales = lazy(() => import("./screens/Sales"));
 
 const CreateProduct = lazy(() => import("./screens/CreateProduct"));
 
+const SaleResume = lazy(() => import("./screens/SaleResume"));
+
 export default () => {
   useEffect(() => {
     const userInSession = localStorage.getItem("user");
@@ -45,7 +47,11 @@ export default () => {
   return (
     <Provider store={store}>
       <Router>
-        <Suspense fallback={<img src={logo} className="App-logo" alt="" width="100px" />}>
+        <Suspense
+          fallback={
+            <img src={logo} className="App-logo" alt="" width="100px" />
+          }
+        >
           <Switch>
             <Route path="/login">
               <Login />
@@ -70,6 +76,9 @@ export default () => {
             </Route>
             <Route path="/create-product">
               <CreateProduct />
+            </Route>
+            <Route path="/sale-resume">
+              <SaleResume />
             </Route>
             <Route path="/" exact>
               <Welcome />

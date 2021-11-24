@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense, lazy } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import logo from "../assets/svg/logo.svg";
 import SalesItem from "../components/SalesItem";
 import Navbar from "../components/Navbar";
