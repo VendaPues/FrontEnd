@@ -20,8 +20,6 @@ const Balance = lazy(() => import("./screens/Balance"));
 
 const Sales = lazy(() => import("./screens/Sales"));
 
-const CreateProduct = lazy(() => import("./screens/CreateProduct"));
-
 const SaleResume = lazy(() => import("./screens/SaleResume"));
 
 export default () => {
@@ -73,9 +71,6 @@ export default () => {
             </Route>
             <Route path="/sales">
               <Sales />
-            </Route>
-            <Route path="/create-product">
-              <CreateProduct />
             </Route>
             <Route path="/sale-resume">
               <SaleResume />

@@ -3,12 +3,12 @@ import "./styles/ComponentsStyles.css";
 import UpdateProductForm from "./UpdateProductForm";
 import DeleteProductForm from "./DeleteProductForm";
 import Confirmation from "./Confirmation";
+import CreateProductForm from "./CreateProductForm";
 
-//content: U (update product), D (delete product), C (add to cart confirmation)
-const Modal = ({ handleClose, show, item, child }) => {
+const Modal = ({ handleClose, show, item, child, confirmationMessage }) => {
   const showHideClassName = show ? "modal display-block" : "modal display-none";
 
-  if (child === "U") {
+  if (child === "UpdateProduct") {
     return (
       <div className={showHideClassName}>
         <section className="modal-main">
@@ -16,7 +16,7 @@ const Modal = ({ handleClose, show, item, child }) => {
         </section>
       </div>
     );
-  } else if (child === "D") {
+  } else if (child === "DeleteProduct") {
     return (
       <div className={showHideClassName}>
         <section className="modal-main">
@@ -24,13 +24,23 @@ const Modal = ({ handleClose, show, item, child }) => {
         </section>
       </div>
     );
-  } else if (child === "C") {
+  } else if (child === "Confirmation") {
     return (
       <div className={showHideClassName}>
         <section className="modal-main">
           <Confirmation
             closeAction={handleClose}
-            message={"Se añadió al carrito."}
+            message={confirmationMessage}
+          />
+        </section>
+      </div>
+    );
+  } else if (child === "CreateProduct") {
+    return (
+      <div className={showHideClassName}>
+        <section className="modal-main">
+          <CreateProductForm
+            closeAction={handleClose}
           />
         </section>
       </div>

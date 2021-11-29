@@ -39,11 +39,16 @@ const ProductItem = ({ productItem, shopingCartAction }) => {
   }
 
   function handleShopingCartAction() {
-    openCartConfirmationModal();
-    shopingCartAction({
-      productId: productItem?.id,
-      quantity: selectedQuantity,
-    });
+    if (selectedQuantity != 0) {
+      shopingCartAction({
+        productId: productItem?.id,
+        productPrice: productItem?.salesPrice,
+        quantity: selectedQuantity,
+      });
+      openCartConfirmationModal();
+    } else {
+      alert("Debes seleccionar al menos una unidad del producto..");
+    }
   }
 
   function handleQuantityAdition() {
@@ -122,7 +127,8 @@ const ProductItem = ({ productItem, shopingCartAction }) => {
               handleClose={closeCartConfirmationModal}
               show={cartConfirmationIsOpen}
               item={productItem}
-              child="C"
+              child="Confirmation"
+              confirmationMessage = "Se añadió al carrito."
             />
           </Suspense>
 
@@ -142,7 +148,7 @@ const ProductItem = ({ productItem, shopingCartAction }) => {
               handleClose={closeUpdateModal}
               show={updateModalIsOpen}
               item={productItem}
-              child="U"
+              child="UpdateProduct"
             />
           </Suspense>
           <button
@@ -161,7 +167,7 @@ const ProductItem = ({ productItem, shopingCartAction }) => {
               handleClose={closeDeleteModal}
               show={deleteModalIsOpen}
               item={productItem}
-              child="D"
+              child="DeleteProduct"
             />
           </Suspense>
         </div>

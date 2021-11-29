@@ -20,23 +20,23 @@ const Welcome = () => {
   };
 
   return (
-    <div className="welcomeContainer">
-      <img className="welcomeLogo" src={logo} alt="" />
-      <div className="welcomeLoginButton">
+    <div className="welcome-container">
+      <img className="welcome-logo" src={logo} alt="" />
+      <div className="welcome-login-button">
         <Link
           to="/login"
           type="button"
-          className="btn btn-primary welcomeLoginButtonBtn"
+          className="btn btn-primary welcome-login-button-btn"
         >
           Iniciar Sesión
         </Link>
       </div>
-      <div className="welcomeMailCard">
-        <div className="welcomeMainText">Vende, monitorea y mucho más</div>
-        <div className="welcomeSecondText">
+      <div className="welcome-mail-card container">
+        <div className="welcome-main-text">Vende, monitorea y mucho más</div>
+        <div className="welcome-second-text">
           Potencia tu negocio, vende mucho y gasta poco.
         </div>
-        <div className="welcomeThirdText">
+        <div className="welcome-third-text">
           ¿Quieres registrarte ahora? Ingresa tu email para crear una cuenta
         </div>
         <div className="input-group mb-3">

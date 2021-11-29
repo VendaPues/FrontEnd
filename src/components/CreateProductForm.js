@@ -1,18 +1,21 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import "./styles/ComponentsStyles.css";
 import axios from "axios";
 
-const UpdateProductForm = ({ product, closeAction }) => {
+const CreateProductForm = ({ closeAction }) => {
+  let history = useHistory();
   const storage = window.localStorage;
 
-  const [productName, setProductName] = useState(product.productName);
-  const [description, setDescription] = useState(product.description);
-  const [price, setPrice] = useState(product.price);
-  const [salesPrice, setSalesPrice] = useState(product.salesPrice);
-  const [stock, setStock] = useState(product.stock);
-  const [tax, setTax] = useState(product.tax);
-  const [imageUrl, setImageUrl] = useState(product.imageUrl);
+  const [productName, setProductName] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
+  const [salesPrice, setSalesPrice] = useState("");
+  const [stock, setStock] = useState(0);
+  const [tax, setTax] = useState(0);
+  const [imageUrl, setImageUrl] = useState("");
 
-  const updateProduct = () => {
+  const createProduct = () => {
     let currentUser = JSON.parse(storage.getItem("user"));
     let newProduct = {
       productName: productName,
@@ -37,8 +40,8 @@ const UpdateProductForm = ({ product, closeAction }) => {
       !!imageUrl
     ) {
       axios
-        .put(
-          `https://venda-pues-products-api-2.herokuapp.com/v1/product/${product.id}`,
+        .post(
+          `https://venda-pues-products-api-2.herokuapp.com/v1/product/${currentUser.userId}`,
           newProduct,
           config
         )
@@ -61,14 +64,10 @@ const UpdateProductForm = ({ product, closeAction }) => {
   return (
     <div className="container">
       <div className="updateTitle">Actualizar Producto</div>
-      <div className="input-group flex-nowrap mb-4">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Nombre</span>
-        </div>
+      <div className="input-group flex-nowrap mb-4 mt-4">
         <input
           type="text"
           className="form-control"
-          value={productName}
           onChange={(value) => setProductName(value.target.value)}
           placeholder="Nombre del Producto"
           aria-label="Nombre del Producto"
@@ -76,13 +75,9 @@ const UpdateProductForm = ({ product, closeAction }) => {
         />
       </div>
       <div className="input-group flex-nowrap mb-4">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Descripción</span>
-        </div>
         <input
           type="text"
           className="form-control"
-          value={description}
           onChange={(value) => setDescription(value.target.value)}
           placeholder="Descripción"
           aria-label="Descripción"
@@ -90,13 +85,9 @@ const UpdateProductForm = ({ product, closeAction }) => {
         />
       </div>
       <div className="input-group flex-nowrap mb-4">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Precio</span>
-        </div>
         <input
           type="text"
           className="form-control"
-          value={price}
           onChange={(value) => setPrice(value.target.value)}
           placeholder="Precio"
           aria-label="Precio"
@@ -104,13 +95,9 @@ const UpdateProductForm = ({ product, closeAction }) => {
         />
       </div>
       <div className="input-group flex-nowrap mb-1">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Precio de venta</span>
-        </div>
         <input
           type="text"
           className="form-control"
-          value={salesPrice}
           onChange={(value) => setSalesPrice(value.target.value)}
           placeholder="Precio de Venta"
           aria-label="Precio de Venta"
@@ -118,13 +105,9 @@ const UpdateProductForm = ({ product, closeAction }) => {
         />
       </div>
       <div className="input-group flex-nowrap mb-4 mt-4">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Stock</span>
-        </div>
         <input
           type="number"
           className="form-control"
-          value={stock}
           onChange={(value) => setStock(value.target.value)}
           placeholder="Unidades en Inventario"
           aria-label="Unidades en Inventario"
@@ -132,13 +115,9 @@ const UpdateProductForm = ({ product, closeAction }) => {
         />
       </div>
       <div className="input-group flex-nowrap mb-4">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Impuestos</span>
-        </div>
         <input
           type="number"
           className="form-control"
-          value={tax}
           onChange={(value) => setTax(value.target.value)}
           placeholder="Impuestos (%)"
           aria-label="Impuestos (%)"
@@ -146,13 +125,9 @@ const UpdateProductForm = ({ product, closeAction }) => {
         />
       </div>
       <div className="input-group flex-nowrap mb-1">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Imagen</span>
-        </div>
         <input
           type="text"
           className="form-control"
-          value={imageUrl}
           onChange={(value) => setImageUrl(value.target.value)}
           placeholder="Url de la Imagen"
           aria-label="Url de la Imagen"
@@ -162,10 +137,10 @@ const UpdateProductForm = ({ product, closeAction }) => {
       <div className="update-buttons-container">
         <button
           type="button"
-          onClick={updateProduct}
+          onClick={createProduct}
           className="btn btn-primary update-form-button"
         >
-          Actualizar
+          Crear Producto
         </button>
         <button
           type="button"
@@ -179,4 +154,4 @@ const UpdateProductForm = ({ product, closeAction }) => {
   );
 };
 
-export default UpdateProductForm;
+export default CreateProductForm;

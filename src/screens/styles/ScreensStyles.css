@@ -4,7 +4,7 @@ body {
 }
 
 /* WELCOME SCREEN */
-.welcomeContainer {
+.welcome-container {
   background-image: url("../../assets/backgrounds/background.jpg");
   background-size: contain;
   background-repeat: no-repeat;
@@ -14,22 +14,22 @@ body {
   overflow-y: hidden;
   overflow-x: hidden;
 }
-.welcomeLogo {
+.welcome-logo {
   margin-top: 20px;
   margin-left: 20px;
 }
-.welcomeLoginButton {
+.welcome-login-button {
   position: fixed;
   margin-top: -100px;
   right: 5px;
 }
-.welcomeLoginButtonBtn {
+.welcome-login-button-btn {
   height: 50px;
   width: 150px;
   text-align: center;
   padding-top: 10px;
 }
-.welcomeMailCard {
+.welcome-mail-card {
   background-color: #262626;
   padding: 25px;
   height: 280px;
@@ -39,21 +39,21 @@ body {
   bottom: 350px;
   left: 150px;
 }
-.welcomeMainText {
+.welcome-main-text {
   font-size: 33px;
   color: white;
   font-weight: 500;
   margin-bottom: 20px;
   text-align: center;
 }
-.welcomeSecondText {
+.welcome-second-text {
   font-size: 24px;
   color: white;
   font-weight: 200;
   margin-bottom: 20px;
   text-align: center;
 }
-.welcomeThirdText {
+.welcome-third-text {
   font-size: 18px;
   color: white;
   font-weight: 200;
@@ -192,10 +192,12 @@ body {
   margin-right: auto;
   margin-left: auto;
 }
+.product-buttons-container {
+  text-align: center;
+}
 .create-product-button {
   height: 40px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin: 2%;
   width: 250px;
 }
 .new-product-section {

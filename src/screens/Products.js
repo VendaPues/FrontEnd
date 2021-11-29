@@ -5,12 +5,22 @@ import Navbar from "../components/Navbar";
 import "./styles/ScreensStyles.css";
 import axios from "axios";
 
+const Modal = lazy(() => import("../components/Modal"));
+
 const ProductItem = lazy(() => import("../components/ProductItem"));
 
 const Products = () => {
   const [productsData, setProductsData] = useState([]);
 
-  const [shoppingCart, setShoppingCart] = useState([]);
+  const [creationFormIsOpen, setCreationFormModalOpen] = useState(false);
+
+  function openCreationFormModal() {
+    setCreationFormModalOpen(true);
+  }
+
+  function closeCreationFormModal() {
+    setCreationFormModalOpen(false);
+  }
 
   let history = useHistory();
 
@@ -37,19 +47,22 @@ const Products = () => {
       });
   }, []);
 
-  const goToCreateProduct = () => {
-    history.push("/create-product");
-  };
-
   const goToSaleResume = () => {
-    storage.setItem("shoppingCart", JSON.stringify(shoppingCart));
-    history.push("/sale-resume");
+    if (storage.getItem("shoppingCart")) {
+      history.push("/sale-resume");
+    } else if (!storage.getItem("shoppingCart")) {
+      alert("La canasta está vacía, añade unos productos para verla.");
+    }
   };
 
   const addToShopingCart = (product) => {
-    const arr = shoppingCart;
-    arr.push(product);
-    setShoppingCart(arr);
+    if (storage.getItem("shoppingCart")) {
+      let currentShoppingCart = JSON.parse(storage.getItem("shoppingCart"));
+      currentShoppingCart.saleData.push(product);
+      storage.setItem("shoppingCart", JSON.stringify(currentShoppingCart));
+    } else if (!storage.getItem("shoppingCart")) {
+      storage.setItem("shoppingCart", JSON.stringify({saleData : [product]}));
+    }
   };
 
   return (
@@ -57,14 +70,25 @@ const Products = () => {
       <Navbar />
       <div className="container">
         <span className="products-title">Productos</span>
-        <div className="new-product-section">
+        <div className="product-buttons-container">
           <button
             type="button"
-            onClick={goToCreateProduct}
+            onClick={openCreationFormModal}
             className="btn btn-primary create-product-button"
           >
             Añadir nuevo producto
           </button>
+          <Suspense
+            fallback={
+              <img src={logo} className="App-logo" alt="" width="100px" />
+            }
+          >
+            <Modal
+              handleClose={closeCreationFormModal}
+              show={creationFormIsOpen}
+              child="CreateProduct"
+            />
+          </Suspense>
           <button
             type="button"
             onClick={goToSaleResume}

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, Suspense } from "react";
+import "react-datepicker/dist/react-datepicker.css";
 import logo from "../assets/svg/logo.svg";
 import SalesItem from "../components/SalesItem";
 import Navbar from "../components/Navbar";
@@ -52,7 +53,9 @@ const Sales = () => {
           }
         >
           {salesData.map((sale) => {
-            return <SalesItem key={sale.id} salesItem={sale} />;
+            if (sale) {
+              return <SalesItem key={sale.id} salesItem={sale} />;
+            }
           })}
         </Suspense>
       </div>
