@@ -22,7 +22,7 @@ const Sales = lazy(() => import("./screens/Sales"));
 
 const SaleResume = lazy(() => import("./screens/SaleResume"));
 
-export default () => {
+const App = () => {
   useEffect(() => {
     const userInSession = localStorage.getItem("user");
     const storage = window.localStorage;
@@ -84,3 +84,5 @@ export default () => {
     </Provider>
   );
 };
+
+export default App;

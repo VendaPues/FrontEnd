@@ -4,7 +4,7 @@ import "./styles/ComponentsStyles.css";
 const SalesItem = ({ salesItem }) => {
   let date = new Date(salesItem?.soldAt).toString();
 
-  let amount = new Number(salesItem?.amount).toString();
+  let amount = Number(salesItem?.amount).toString();
 
   return (
     <div className="product-item-container">

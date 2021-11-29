@@ -41,14 +41,12 @@ const Balance = () => {
       <Navbar />
       <div className="container">
         <span className="balance-title">Balance</span>
-        /**Formulario */
         <DateFilterForm
           currentStartDate={startDate}
           setStartDateAction={setStartDate}
           currentEndDate={endDate}
           setEndDateAction={setEndDate}
         />
-        /**Line graphic */
         <LineChart
           width={600}
           height={400}
@@ -62,7 +60,6 @@ const Balance = () => {
           <Line type="monotone" dataKey="ventas" stroke="#ff7300" yAxisId={0} />
           <Legend />
         </LineChart>
-        /**Cards */
         <div className="row m-5">
           <div className="card balance-card">
             <div className="card-body">
@@ -89,7 +86,7 @@ const Balance = () => {
           <div className="col-4">
             <div className="balanceCardItem">
               <div className="imageContainer">
-                <img className="balanceBarsImage" src={bars} />
+                <img className="balanceBarsImage" alt="" src={bars} />
               </div>
               <div className="balanceCardLabel">Productos más vendidos</div>
               <button
@@ -103,7 +100,7 @@ const Balance = () => {
           <div className="col-4">
             <div className="balanceCardItem">
               <div className="imageContainer">
-                <img className="balanceBarsImage" src={productExample} />
+                <img className="balanceBarsImage" alt="" src={productExample} />
               </div>
               <div className="balanceCardLabel">Producto del día</div>
               <button
@@ -117,7 +114,7 @@ const Balance = () => {
           <div className="col-4">
             <div className="balanceCardItem">
               <div className="imageContainer">
-                <img className="balanceBarsImage" src={productExample} />
+                <img className="balanceBarsImage" alt="" src={productExample} />
               </div>
               <div className="balanceCardLabel">Productos agotados</div>
               <button

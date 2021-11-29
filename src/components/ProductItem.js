@@ -39,7 +39,7 @@ const ProductItem = ({ productItem, shopingCartAction }) => {
   }
 
   function handleShopingCartAction() {
-    if (selectedQuantity != 0) {
+    if (selectedQuantity !== 0) {
       shopingCartAction({
         productId: productItem?.id,
         productPrice: productItem?.salesPrice,

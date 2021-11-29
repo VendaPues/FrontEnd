@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import "./styles/ComponentsStyles.css";
 import axios from "axios";
 
 const CreateProductForm = ({ closeAction }) => {
-  let history = useHistory();
   const storage = window.localStorage;
 
   const [productName, setProductName] = useState("");

@@ -18,7 +18,7 @@ const Navbar = () => {
       setInicioClass("");
       setCuentaClass("active");
     }
-  });
+  }, []);
 
   const logOut = () => {
     storage.clear();
@@ -27,16 +27,16 @@ const Navbar = () => {
 
   return (
     <div className="navbar-container row">
-      <img className="navbar-logo col-2" src={logo} />
+      <img className="navbar-logo col-2" alt="" src={logo} />
       <Link to="/home" className={`col-1 navbar-label ${inicioClass}`}>
         Inicio
       </Link>
       <Link to="/account" className={`col-1 navbar-label ${cuentaClass}`}>
         Cuenta
       </Link>
-      <a onClick={logOut} className={`col-1 navbar-label`}>
+      <span onClick={logOut} className={`col-1 navbar-label`}>
         Salir
-      </a>
+      </span>
     </div>
   );
 };

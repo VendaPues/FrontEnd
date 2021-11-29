@@ -31,7 +31,7 @@ const Sales = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [storage]);
 
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
@@ -56,6 +56,7 @@ const Sales = () => {
             if (sale) {
               return <SalesItem key={sale.id} salesItem={sale} />;
             }
+            return null;
           })}
         </Suspense>
       </div>

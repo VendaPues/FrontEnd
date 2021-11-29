@@ -18,7 +18,7 @@ const Register = () => {
   useEffect(() => {
     let emailToRegister = storage.getItem("emailToRegister");
     setEmail(emailToRegister);
-  }, []);
+  }, [storage]);
 
   const login = () => {
     let formItem = {
@@ -85,7 +85,7 @@ const Register = () => {
 
   return (
     <div>
-      <img className="welcomeLogo" src={logo} onClick={goToWelcome} />
+      <img className="welcomeLogo" alt="" src={logo} onClick={goToWelcome} />
       <div className="registerForm container col-3">
         <div className="registerTitle">Registro</div>
         <div className="input-group flex-nowrap mb-4">

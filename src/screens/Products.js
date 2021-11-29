@@ -45,7 +45,7 @@ const Products = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  });
 
   const goToSaleResume = () => {
     if (storage.getItem("shoppingCart")) {
@@ -61,7 +61,7 @@ const Products = () => {
       currentShoppingCart.saleData.push(product);
       storage.setItem("shoppingCart", JSON.stringify(currentShoppingCart));
     } else if (!storage.getItem("shoppingCart")) {
-      storage.setItem("shoppingCart", JSON.stringify({saleData : [product]}));
+      storage.setItem("shoppingCart", JSON.stringify({ saleData: [product] }));
     }
   };
 
@@ -112,6 +112,7 @@ const Products = () => {
                 />
               );
             }
+            return null;
           })}
         </Suspense>
       </div>

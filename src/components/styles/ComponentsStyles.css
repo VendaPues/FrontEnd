@@ -23,7 +23,7 @@
 .active {
   background-color: #c1c1c1;
 }
-a {
+span {
   cursor: pointer;
 }
 

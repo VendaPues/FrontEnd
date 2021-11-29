@@ -3,7 +3,7 @@ const initialState = {
   userLogged: false,
 };
 
-export default function (state = initialState, action) {
+function loginValidator(state = initialState, action) {
   switch (action.type) {
     case "VALIDATE_LOGIN":
       return {
@@ -14,3 +14,5 @@ export default function (state = initialState, action) {
       return state;
   }
 }
+
+export default loginValidator;
