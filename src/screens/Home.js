@@ -30,7 +30,7 @@ const Home = () => {
           <img className="homeTabImage" alt="" src={mercado} />
         </div>
         <div className="homeTab col-4" onClick={goToBalance}>
-          <div className="homeTabTitle">Balance</div>
+          <div className="homeTabTitle">Reporte</div>
           <img className="homeTabImage" alt="" src={balance} />
         </div>
         <div className="homeTab col-4" onClick={goToSales}>

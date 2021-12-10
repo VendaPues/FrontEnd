@@ -62,8 +62,8 @@ const UpdateProductForm = ({ product, closeAction }) => {
     <div className="container">
       <div className="updateTitle">Actualizar Producto</div>
       <div className="input-group flex-nowrap mb-4">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Nombre</span>
+        <div className="input-group-prepend">
+          <span className="input-group-text">Nombre</span>
         </div>
         <input
           type="text"
@@ -76,8 +76,8 @@ const UpdateProductForm = ({ product, closeAction }) => {
         />
       </div>
       <div className="input-group flex-nowrap mb-4">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Descripción</span>
+        <div className="input-group-prepend">
+          <span className="input-group-text">Descripción</span>
         </div>
         <input
           type="text"
@@ -90,8 +90,8 @@ const UpdateProductForm = ({ product, closeAction }) => {
         />
       </div>
       <div className="input-group flex-nowrap mb-4">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Precio</span>
+        <div className="input-group-prepend">
+          <span className="input-group-text">Precio</span>
         </div>
         <input
           type="text"
@@ -104,8 +104,8 @@ const UpdateProductForm = ({ product, closeAction }) => {
         />
       </div>
       <div className="input-group flex-nowrap mb-1">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Precio de venta</span>
+        <div className="input-group-prepend">
+          <span className="input-group-text">Precio de venta</span>
         </div>
         <input
           type="text"
@@ -118,8 +118,8 @@ const UpdateProductForm = ({ product, closeAction }) => {
         />
       </div>
       <div className="input-group flex-nowrap mb-4 mt-4">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Stock</span>
+        <div className="input-group-prepend">
+          <span className="input-group-text">Stock</span>
         </div>
         <input
           type="number"
@@ -132,8 +132,8 @@ const UpdateProductForm = ({ product, closeAction }) => {
         />
       </div>
       <div className="input-group flex-nowrap mb-4">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Impuestos</span>
+        <div className="input-group-prepend">
+          <span className="input-group-text">Impuestos</span>
         </div>
         <input
           type="number"
@@ -146,8 +146,8 @@ const UpdateProductForm = ({ product, closeAction }) => {
         />
       </div>
       <div className="input-group flex-nowrap mb-1">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Imagen</span>
+        <div className="input-group-prepend">
+          <span className="input-group-text">Imagen</span>
         </div>
         <input
           type="text"
