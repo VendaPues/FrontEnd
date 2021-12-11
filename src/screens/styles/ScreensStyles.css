@@ -103,8 +103,24 @@ body {
 }
 
 /* HOME SCREEN */
+.business-name-title {
+  color: #e96845;
+  font-size: 60px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
+  display: block;
+  text-align: center;
+  margin-top: 2%;
+}
+.home-message {
+  color: #2d3b6b;
+  margin-top: 1%;
+  font-size: 40px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
+  display: block;
+  text-align: center;
+}
 .homeContainer {
-  margin-top: 150px;
+  margin-top: 4%;
   margin-left: 50%;
   transform: translate(-50%, 0);
   width: 75vw;
@@ -157,10 +173,10 @@ body {
   padding-bottom: 2%;
   margin-bottom: 2%;
 }
-.balance-graph-section-container {
+.balance-danger-section-container {
   border: solid 2px #ced4da;
   border-radius: 10px;
-  background-color: rgb(206, 226, 247);
+  background-color: rgb(245, 176, 176);
   padding-right: 2%;
   padding-left: 2%;
   padding-bottom: 2%;
@@ -175,6 +191,8 @@ body {
   margin-bottom: 2%;
 }
 .graph-container {
+  display: block;
+  text-align: center;
   margin-top: 2%;
 }
 .datepicker-container {
@@ -259,4 +277,23 @@ body {
   to {
     transform: rotate(360deg);
   }
+}
+
+/*SHOPPING KART SCREEN*/
+.kart-buttons-container {
+  text-align: center;
+}
+.kart-table {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+/*ACCOUNT*/
+.account-date-message {
+  color: #2d3b6b;
+  margin-top: 1%;
+  font-size: 20px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
+  display: block;
+  text-align: center;
 }

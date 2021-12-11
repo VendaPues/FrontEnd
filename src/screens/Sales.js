@@ -26,7 +26,7 @@ const Sales = () => {
         config
       )
       .then((res) => {
-        setSalesData(res.data);
+        setSalesData(res.data.reverse());
       })
       .catch((err) => {
         console.log(err);
@@ -52,9 +52,9 @@ const Sales = () => {
             <img src={logo} className="App-logo" alt="" width="100px" />
           }
         >
-          {salesData.map((sale) => {
+          {salesData.map((sale, i) => {
             if (sale) {
-              return <SalesItem key={sale.id} salesItem={sale} />;
+              return <SalesItem key={sale.id} salesItem={sale} index={salesData.length - 1 - i}/>;
             }
             return null;
           })}

@@ -38,6 +38,11 @@ const ProductItem = ({ productItem, shopingCartAction }) => {
     setDeleteModalOpen(false);
   }
 
+  var formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
+
   function handleShopingCartAction() {
     if (selectedQuantity !== 0) {
       shopingCartAction({
@@ -74,7 +79,7 @@ const ProductItem = ({ productItem, shopingCartAction }) => {
         <div className="col-10">
           <div className="product-details-container">
             <div className="product-item-price">
-              <b>Precio:</b> ${productItem?.salesPrice}
+              <b>Precio:</b> {formatter.format(productItem?.salesPrice)}
             </div>
             <div className="product-item-price">
               <b>Unidades disponibles:</b> {productItem?.stock}

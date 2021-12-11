@@ -22,21 +22,21 @@ const ProductItemInfoCard = lazy(() =>
 );
 
 const lineGraphData = [
-  { date: "Lun", ventas: 30 },
-  { date: "Mar", ventas: 21 },
-  { date: "Mie", ventas: 25 },
-  { date: "Jue", ventas: 40 },
-  { date: "Vie", ventas: 50 },
-  { date: "Sab", ventas: 100 },
-  { date: "Dom", ventas: 20 },
+  { date: "Lun", ventas: 2 },
+  { date: "Mar", ventas: 1 },
+  { date: "Mie", ventas: 3 },
+  { date: "Jue", ventas: 4 },
+  { date: "Vie", ventas: 3 },
+  { date: "Sab", ventas: 1 },
+  { date: "Dom", ventas: 0 },
 ];
 
 const barGraphData = [
-  {product: "Gansito", ventas: 5},
-  {product: "Chocorramo", ventas: 10},
-  {product: "Arroz Roa", ventas: 3},
-  {product: "Coca-Cola", ventas: 4}
-]
+  { product: "Arroz Roa", ventas: 5 },
+  { product: "Coca-Cola", ventas: 5 },
+  { product: "Gansito", ventas: 7 },
+  { product: "Chocorramo", ventas: 9 }
+];
 
 const Balance = () => {
   const storage = window.localStorage;
@@ -107,7 +107,29 @@ const Balance = () => {
           currentEndDate={endDate}
           setEndDateAction={setEndDate}
         />
-        <div className="balance-graph-section-container row">
+        <Suspense
+          fallback={
+            <img src={logo} className="App-logo" alt="" width="100px" />
+          }
+        >
+          <div className="balance-danger-section-container">
+            <span className="balance-subtitle">Productos agotados</span>
+            <div className="container">
+              {soldOutProducts.map((product) => {
+                if (product) {
+                  return (
+                    <ProductItemInfoCard
+                      key={product.id}
+                      productItem={product}
+                    />
+                  );
+                }
+                return null;
+              })}
+            </div>
+          </div>
+        </Suspense>
+        <div className="balance-section-container row">
           <span className="balance-subtitle">Gráficos</span>
           <div className="col graph-container">
             <span className="graph-title">Ventas durante la última semana</span>
@@ -132,7 +154,7 @@ const Balance = () => {
           </div>
 
           <div className="col graph-container">
-            <span className="graph-title">Ventas por producto</span>
+            <span className="graph-title">Tus productos más vendidos</span>
             <BarChart
               width={500}
               height={300}
@@ -141,7 +163,7 @@ const Balance = () => {
             >
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="product" />
-              <YAxis dataKey="ventas"/>
+              <YAxis dataKey="ventas" />
               <Tooltip />
               <Legend />
               <Bar dataKey="ventas" fill="#8884d8" />
@@ -172,29 +194,6 @@ const Balance = () => {
                 Ganancias: <b>{formatter.format(salesStats.earnings)}</b>
               </div>
             </div>
-          </div>
-        </div>
-
-        <div className="balance-section-container">
-          <span className="balance-subtitle">Productos agotados</span>
-          <div className="container">
-            <Suspense
-              fallback={
-                <img src={logo} className="App-logo" alt="" width="100px" />
-              }
-            >
-              {soldOutProducts.map((product) => {
-                if (product) {
-                  return (
-                    <ProductItemInfoCard
-                      key={product.id}
-                      productItem={product}
-                    />
-                  );
-                }
-                return null;
-              })}
-            </Suspense>
           </div>
         </div>
       </div>

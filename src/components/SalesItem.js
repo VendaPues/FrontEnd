@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import "./styles/ComponentsStyles.css";
 import axios from "axios";
 
-const SalesItem = ({ salesItem }) => {
+const SalesItem = ({ salesItem, index }) => {
   var date = new Date(salesItem?.soldAt);
 
   const storage = window.localStorage;
@@ -36,7 +36,6 @@ const SalesItem = ({ salesItem }) => {
     );
   }
   
-
   useEffect(() => {
     let currentUser = JSON.parse(storage.getItem("user"));
     const config = {
@@ -61,7 +60,7 @@ const SalesItem = ({ salesItem }) => {
 
   return (
     <div className="product-item-container">
-      <div className="product-item-name">Venta N° {salesItem?.id}</div>
+      <div className="product-item-name">Venta N° {index + 1}</div>
       <div className="product-details-container">
         <div className="row mt-3">
           <div className="col-5">
